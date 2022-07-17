@@ -1,53 +1,102 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px AppleMyungjo; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Apple SD Gothic Neo'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85)}
-    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px AppleMyungjo; color: #000000; -webkit-text-stroke: #000000}
-    li.li4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {-webkit-text-stroke: 0px #000000}
-    span.s3 {font: 11.0px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
-    span.s4 {font: 12.0px AppleMyungjo; -webkit-text-stroke: 0px #000000}
-    span.s5 {font: 12.0px AppleMyungjo; font-kerning: none}
-    span.s6 {font-kerning: none; background-color: #ffffff}
-    span.s7 {font: 11.0px 'Apple SD Gothic Neo'; font-kerning: none; background-color: #ffffff}
-    span.s8 {font-kerning: none; background-color: #b3b3b3}
-    span.s9 {font: 12.0px AppleMyungjo; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    ul.ul1 {list-style-type: disc}
-  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제주항공 | 관리자 목록</title>
+  <link rel="stylesheet" type="text/css" href="/admin/lib/css/common.css">
+  <link rel="icon" href="/admin/lib/images/favicon.ico">
 </head>
+<!-- topscript 시작-->
+<div th:replace="/admin/fragment/topscript.html :: topscript"></div>
+<!-- topscript 끝-->
+
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"></span><br></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px AppleMyungjo; color: #000000; -webkit-text-stroke: #000000"><span class="s1">관리자 수정</span></h2>
-<ul class="ul1">
-  <li class="li3"><span class="s2"></span><span class="s1">고유번호 </span><span class="s3">103</span><span class="s1"><br>
-</span></li>
-  <li class="li4"><span class="s4"></span><span class="s5">연락처 </span><span class="s6">010-0000-0000</span><span class="s5"><br>
-</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">아이디 </span><span class="s3">user10</span><span class="s1"><br>
-</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">사번 </span><span class="s3">151617</span><span class="s1"><br>
-</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">비밀번호 </span><span class="s3">qwer1234</span><span class="s1"><br>
-</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">부서 </span><span class="s7">전산관리부</span><span class="s1"><br>
-</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">성명(KOR) </span><span class="s7">홍길동</span><span class="s1"><br>
-</span></li>
-  <li class="li4"><span class="s4"></span><span class="s5">이메일 </span><span class="s6">gildong@jejuair.com</span><span class="s5"><br>
-</span></li>
-  <li class="li4"><span class="s4"></span><span class="s5">성명(ENG) </span><span class="s6">HONG GIL DONG</span><span class="s5"><br>
-</span></li>
-</ul>
-<p class="p5"><span class="s8">목록</span><span class="s9"> </span><span class="s8">등록</span><span class="s9"><span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"></span><br></p>
+<div class="container">
+  <!-- menu 시작-->
+  <div th:replace="/admin/fragment/menu.html :: menu"></div>
+  <!-- menu 끝-->
+
+  <!-- main -->
+  <div class="containerbody">
+    <div class="main">
+      <!-- 본문 -->
+      <div class="bodytext_area box_inner">
+        <dl class="myinfo">
+          <form action="#" class="regForm">
+            <div class="tableBorder">
+              <div class="pageTitle">
+                <h2>관리자 수정</h2>
+              </div>
+              <ul class="leg_list">
+                <li class="clear">
+                  <span class="tit_lbl">고유번호</span>
+                  <div class="reg_content"><input name="adm_num" type="text" class="textBox" value="103"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">연락처</span>
+                  <div class="reg_content"><input name="adm_tel" type="text" class="textBox" value="010-0000-0000"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">아이디</span>
+                  <div class="reg_content"><input name="adm_adminid" type="text" class="textBox" value="user10"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">사번</span>
+                  <div class="reg_content"><input type="text" name="adm_employee_id" class="textBox" value="151617"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">비밀번호</span>
+                  <div class="reg_content"><input type="text" name="adm_admin_pw" class="textBox" value="qwer1234"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">부서</span>
+                  <div class="reg_content"><input type="text" name="adm_departure" class="textBox" value="전산관리부"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">성명(KOR)</span>
+                  <div class="reg_content"><input type="text" name="adm_name_kor" class="textBox" value="홍길동"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">이메일</span>
+                  <div class="reg_content"><input type="text" name="adm_email" class="textBox" value="gildong@jejuair.com"></div>
+                </li>
+                <li class="clear">
+                  <span class="tit_lbl">성명(ENG)</span>
+                  <div class="reg_content"><input type="text" name="adm_name_eng" class="textBox" value="HONG GIL DONG"></div>
+                </li>
+              </ul>
+
+              <div class="buttonArea">
+                <button type="button" class="button list margin_bottom_20" value="목록" onclick="location.href='/admin_settings/admin_list/admin_list.html'">목록</button>
+                <button type="submit" class="button register margin_bottom_20" value="등록" onclick="edit_view()">등록</button>
+              </div>
+          </form>
+        </dl>
+      </div>
+      <!-- 본문 끝 -->
+    </div>
+  </div>
+</div>
+
+<script>
+
+  function edit_view(){
+    const yn = confirm("게시물을 수정하시겠습니까?");
+    if(yn){
+      location.href = "";
+    }
+  }
+
+</script>
+<!--<underscript.html>-->
+<div th:replace="/admin/fragment/underscript.html :: underscript"></div>
+<!--</underscript> 끝-->
 </body>
+
 </html>
