@@ -1,0 +1,40 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<div th:fragment="underscript">
+    <!--아이콘 사용을 위한 설치 스크립트-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        console.log("헬로우")
+        console.log(document.title.substr(7));
+        var name2 = document.title.substr(7);
+        var span = document.querySelectorAll('.navigation span');
+        var regex = /[^0-9]/g;
+        for(var i=0; i<span.length; i++){
+            if(span[i].innerHTML == name2){
+                console.log("같은게 들어옴 " + i + "번")
+                var li = span[i].parentElement.parentElement
+                var num;
+                var str;
+                if(li.className.substr(0, 4) == 'drop'){
+                    str = li.parentElement.parentElement.firstElementChild.getAttribute("onclick");
+                    num = str.replace(regex, "");
+                    dropdown(num);
+                    li.classList.add('thispage');
+                    li.parentElement.parentElement.classList.add('thispage');
+                }else{
+                    str = li.firstElementChild.getAttribute("onclick");
+                    num = str.replace(regex, "");
+                    dropdown(num);
+                    li.classList.add('thispage');
+                }
+            }
+        }
+
+    </script>
+
+</div>
+
+</html>
