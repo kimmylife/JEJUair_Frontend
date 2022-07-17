@@ -1,0 +1,205 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주항공 | 기내식 목록</title>
+    <link rel="stylesheet" type="text/css" href="/admin/lib/css/common.css">
+    <link rel="icon" href="/admin/lib/images/favicon.ico">
+</head>
+<!-- topscript 시작-->
+<div th:replace="/admin/fragment/topscript.html :: topscript"></div>
+<!-- topscript 끝-->
+
+<body>
+    <div class="container">
+        <!-- menu 시작-->
+        <div th:replace="/admin/fragment/menu.html :: menu"></div>
+        <!-- menu 끝-->
+
+        <div class="containerbody">
+            <!-- main -->
+            <div class="main">
+                <div class="details">
+                    <!-- order details list -->
+                    <div class="recentOrders">
+                        <div class="calheader">
+                            <h2>기내식 목록</h2>
+                        </div>
+                        <div class="scheduleSearch">
+                            <form action="#">
+                                <div class="wrapper">
+                                    <fieldset class="selectDiv">
+                                        <input type="text" class="searchBox" title="검색어를 입력하세요"
+                                            placeholder="검색어를 입력하세요">
+                                            <button type="submit" class="button search" value="검색">검색</button>
+                                    </fieldset>
+                                </div>
+                            </form>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr class="topbanner">
+                                    <td class="fo_idx">번호</td>
+                                    <td class="fo_name">기내식명</td>
+                                    <td class="fo_price">가격</td>
+                                    <td class="fo_food_num">고유번호</td>
+                                    <td class="fo_departure_location">출발지</td>
+                                    <td class="fo_regist_date">등록일자</td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                                <tr onclick="location.href='/airline_food_/airline_food_list/airline_food_view.html'">
+                                    <td class="fo_idx">10</td>
+                                    <td class="fo_name">구름위의 샌드위치</td>
+                                    <td class="fo_price">9,000</td>
+                                    <td class="fo_food_num">1010102</td>
+                                    <td class="fo_departure_location">인천/부산</td>
+                                    <td class="fo_regist_date">2022-06-11</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="paging">
+                            <div class="page_btn">
+                                <a href="#" class="firstpage_btn">First</a>
+                            </div>
+                            <div class="page_btn">
+                                <a href="#" class="prevpage_btn">Prev</a>
+                            </div>
+                            <div class="page_btn2 current_btn">
+                                <a href="#" class="pagenum">1</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">2</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">3</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">4</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">5</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">6</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">7</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">8</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">9</a>
+                            </div>
+                            <div class="page_btn2">
+                                <a href="#" class="pagenum">10</a>
+                            </div>
+                            <div class="page_btn">
+                                <a href="#" class="prevpage_btn">Next</a>
+                            </div>
+                            <div class="page_btn">
+                                <a href="#" class="firstpage_btn">End</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<underscript.html>-->
+    <div th:replace="/admin/fragment/underscript.html :: underscript"></div>
+    <!--</underscript> 끝-->
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<script th:fragment="topscript">
+    function dropdown(num) {
+        var droptarget = 'drop' + num;
+        console.log(droptarget)
+        var target = document.getElementsByClassName(droptarget);
+        var uptarget;
+        var up;
+
+
+        for (var i = 0; i < 12; i++) {
+            if (num == i) { i = i + 1; }
+            console.log('들어옴' + i)
+            uptarget = 'drop' + i;
+            up = document.getElementsByClassName(uptarget);
+
+            for (var j = 0; j < up.length; j++) {
+                console.log('j들어옴' + j)
+                up[j].style.display = 'none';
+                console.log(up[j].style.display);
+            }
+        }
+
+        var disStyle = target[0].style.display;
+        console.log('V' + disStyle + 'V');
+        console.log(disStyle == 'block');
+
+        if (disStyle == 'block') {
+            for (var i = 0; i < target.length; i++) {
+                target[i].style.display = 'none';
+            }
+        } else {
+            for (var i = 0; i < target.length; i++) {
+                target[i].style.display = 'block';
+            }
+        }
+    }
+
+</script>
+</html>
