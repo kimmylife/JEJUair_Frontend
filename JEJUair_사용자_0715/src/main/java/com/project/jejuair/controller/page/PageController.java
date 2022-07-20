@@ -302,19 +302,6 @@ import org.springframework.web.servlet.ModelAndView;
             return new ModelAndView("/admin/pages/flight_schedule/flight_schedule_regist/flight_schedule_regist");
         }
 
-
-
-
-        @RequestMapping("/user")
-        public ModelAndView user_index(){
-            return new ModelAndView("/user/pages/index");
-        }
-
-        @RequestMapping("/user/login")
-        public ModelAndView user_login(){
-            return new ModelAndView("/user/pages/login/login");
-        }
-
-
-
     }
+
+

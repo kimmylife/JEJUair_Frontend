@@ -1,0 +1,1085 @@
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!--head-->
+<div th:replace="/user/fragment/head :: head"></div>
+<!--head 끝-->
+<body id="subLayoutBody">
+
+<!-- 개선 #1271286440
+<div id="skipNav" class="skip-nav">
+	<a href="#content" class="skip-nav__item">본문 바로가기</a>
+</div>
+-->
+<!-- 상단 띠배너 공지사항은 메인페이지만 표시합니다. -->
+<!-- 앱설치알림 -->
+<!-- 남은시간 연장 및 공지바 노출-->
+<div class="top-custom-banner ticketing_top_bar"><!--활성화시 .on 추가-->
+  <div class="top-custom-banner__inner">
+    <dl class="time_bar">
+        <dt>이용 가능시간 : </dt>
+        <dd><strong></strong></dd>
+    </dl>
+    <div class="link-wrap--arrow">
+        <button type="button"  class="link-wrap__text" onclick="javascript:sendExtTripsell();"><span>연장하기</span></button>
+    </div>
+    <button type="button" class="top-custom-banner__close" aria-label="닫기"></button>
+  </div>
+</div>
+
+<!-- //남은시간 연장 및 공지바 노출 -->
+
+<!--header-->
+<div th:replace="/user/fragment/header :: header"></div>
+<!--header 끝-->
+
+
+<div id="body">
+		
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2BQQ4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrap wrap--no-pab GD" >
+        
+        
+            <div id="breadcrumb" class="breadcrumb pc-only" aria-label="breadcrumb">
+                <nav class="breadcrumb__inner">
+                    <div class="breadcrumb__item">
+                        <a href="javascript:;" class="breadcrumb__link">홈</a>
+                    </div>
+                    
+                    
+                        
+                            
+                                <div class="breadcrumb__item">
+                                    <a href="javascript:;" class="breadcrumb__link">마이페이지</a>
+                                </div>
+                            
+                            
+                        
+                    
+                        
+                            
+                            
+                                <div class="breadcrumb__item breadcrumb__item--current" aria-current="page" data-element="toggle" data-options='{"mode": "slide", "speed": 100, "clickToClose": true}'>
+                                    
+                                        
+                                    
+                                        
+                                    
+                                        
+                                    
+                                        
+                                    
+                                        
+                                            <button type="button" class="breadcrumb__link breadcrumb__link--list" data-element="toggle__anchor">나의 예약 현황</button>
+                                        
+                                    
+
+                                    <div class="breadcrumb__siblings-list" data-element="toggle__panel">
+                                        
+                                            
+                                                <a href="javascript:void(0);" class="item" onclick="URL_LINK.getI18Url('/member/mypage/myFlightList.do')">나의 탑승 내역</a>
+                                            
+                                        
+                                            
+                                                <a href="javascript:void(0);" class="item" onclick="URL_LINK.getI18Url('/member/mypage/viewMyGiftTicketList.do')">나의 기프티켓</a>
+                                            
+                                        
+                                            
+                                                <a href="javascript:void(0);" class="item" onclick="URL_LINK.getI18Url('/member/mypage/memberInfoModify.do')">회원정보 수정</a>
+                                            
+                                        
+                                            
+                                                <a href="javascript:void(0);" class="item" onclick="URL_LINK.getI18Url('/member/mypage/main.do')">마이페이지 메인</a>
+                                            
+                                        
+                                            
+                                        
+                                    </div>
+                                </div>
+                            
+                        
+                    
+                </nav>
+            </div>
+        
+
+        
+        <div class="content" id="content">
+            <main id="main" class="main ">
+                
+                
+<form id="formDetail" name="formDetail" method="post" target="_self">
+<input type="hidden" name="resvDetailReq" value="" />
+<input type="hidden" name="domIntType" value="" />
+<input type="hidden" name="rpnr" value="">
+</form>
+
+<form id="formExchange" name="formExchange" method="post" target="_self">
+<input type="hidden" name="pnrData" value="" />
+<input type="hidden" name="processType" value="" />
+<input type="hidden" name="tripType" value="" />
+<input type="hidden" name="domIntType" value="" />
+<input type="hidden" name="rpnr" value="" />
+</form>
+
+<form id="formCheckin" name="formCheckin" method="post" target="_self">
+<input type="hidden" name="checkinReq" value="" />
+</form>
+
+<form id="formAutoBoardingPass" name="formAutoBoardingPass" method="post" target="_self">
+<input type="hidden" name="resvDetailReq" value="" />
+<input type="hidden" name="domIntType" value="" />
+<input type="hidden" name="viewFlag" value="" />
+<input type="hidden" name="passengerObj" value="" />
+</form>
+<div class="page-title-wrap pc-only">
+<div class="page-title">예약현황</div>
+</div>
+<div class="pc-position mb-15">
+<div class="link-wrap--arrow pb0">
+    <div class="link-wrap--arrow pb0">
+          <a href="viewOnOffReservationList.do" class="link-wrap__text"><span>여행사/고객센터/공항구매 조회</span></a>
+    </div>
+</div>
+<div class="right mo-30 pb0" id="sortRadio" style="display:none;"> 
+    <div class="radio-flex radio-flex--default">
+        <div class="radio">
+            <span class="radio"> <input type="radio" id="departureSort" name="inputRadio" class="radio__input" onclick="getReservationList('1','Y')" value="D"> 
+                <label for="departureSort" class="radio__label"> <i aria-hidden="true" class="radio__ico"></i><span>출발일순</span></label>
+            </span>
+        </div>
+        <div class="radio">
+            <span class="radio"> <input type="radio" id="arrivalSort" name="inputRadio" class="radio__input" checked onclick="getReservationList('1','Y')" value="R">
+                <label for="arrivalSort" class="radio__label"> <i aria-hidden="true" class="radio__ico"></i><span>예약일순</span></label>          
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container--small pc-15" style="display: none;" id="divResvList">
+<div class="pc-flex1 pc-flex--boarding1 boarding-list-pc" id="reservationList"></div>
+</div>
+<div data-show="true" class="more-wrap -page-none">
+<button type="button" class="more__button" onclick="moreResvList();" id="resvListBtnMore" style="display: none;"><span class="more__button-text"><span>더보기</span></button> 
+</div>
+
+<div class="finish-item-wrap" style="display: none;" id="divResvNoList">
+<div class="finish-item">
+    <div class="finish-item__img">
+        <img src="/resources/images/icon/icon-nodata-03.png" alt="">
+    </div>
+    <p class="finish-item__title">예매하신 여정이 없습니다.</p>
+    <div class="container--large pc-40">
+        <div class="button-wrap button-wrap--center">
+            <button type="button"
+                class="button button--secondary button--active" onclick="location.href='../booking/Availability.do'">
+                <span class="button__text">항공권 조회</span>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container--large pc-80">
+<div class="service-information" data-options='{"mode": "slide"}'>
+    <div class="service-information__title">
+        <button type="button" id="btnServieInfo" class="service-information__anchor" data-element="toggle__anchor" >유의사항</button>
+    </div>
+    <div class="service-information__content" data-element="toggle__panel">
+    </div>
+</div>
+</div>
+
+<button type="button" id="btnModalOpen" data-element="modal_anchor" style="display: none;"></button>
+
+<div id="alertModalLayer" class="modal modal--simple">
+<div class="modal-content"><p class="alert-text"></p></div>
+<div class="modal__button-area button-wrap"><button type="button" class="button button--secondary button--active" rel="modal:close" onclick="javascript:closeCurrentModal(this);"><span class="button__text">확인</span></button></div>
+</div>
+
+<div id="untkForm" class="modal modal-full modal-scroll" data-width="910">
+<div class="modal-header"><div class="modal-header__title"><span>항공편 스케줄 변경 안내</div></div>
+<div class="modal-content"></div>    
+</div>
+            </main>
+        </div>
+        
+    </div>
+</div>
+
+
+<!-- footer -->
+<div th:replace="/user/fragment/footer :: footer"></div>
+<!-- / footer 끝 -->
+
+
+
+<!-- 공통 스크립트 선언 -->
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/lib/lib.min.js"></script>
+
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/lib/moment-with-locales.min.js"></script>
+
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/lib/jquery.i18n.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/lib/jquery.i18n.messagestore.js"></script>
+<!-- 메인페이지 스크립트 에러 발생으로 이전 소스로 변경합니다. 
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/booking/plugin.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/booking/common.js"></script>
+-->
+<script>
+$(document).ready(function(){
+	
+		$.ajaxSetup({
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('tcode', '0000000196');
+				xhr.setRequestHeader('cname', USER_DEVICE.getName());
+			}
+		});
+	
+	
+	//BOOKING LAYOUT상태서 sub로 바뀔경우  
+	$(document).off('changeLayout').on('changeLayout', function(e, type) {
+		if(type==='sub') {
+			$('.bookingType').hide();
+			$('.subType').show();
+		}else if(type==='booking'){
+			$('.subType').hide();
+			$('.bookingType').show();
+		}
+	});
+    
+	//breadcrumbs cursor default
+	$('.breadcrumb__item > a').css('cursor','default');
+});
+
+//타이틀 설정
+$('header.mobile-only h2.header__page-name').text($('#main div.page-title').eq(0).text());
+</script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/plugin.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/common.js"></script>
+
+<!--필요시만 로드-->
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/vendor/lodash.min.js"></script>
+<!--사용되지 않음-->
+<!--<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/vendor/localforage.min.js"></script>-->
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/vendor/handlebars.min-v4.7.6.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/handlebars.helpers.js"></script>
+
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/util/sUtil.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/util/dUtil.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/util/utils.js"></script>
+
+<!--필요시만 로드-->
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/amcharts/amcharts.core.js"></script>
+
+
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/bizjs/commons/bizCommons.js"></script>
+<script type="text/javascript" src="https://static.jejuair.net/hpgg/resources/js/jj.helpers.js"></script>
+
+	
+        
+    
+
+	<script src="https://static.jejuair.net/hpgg/resources/js/booking/airport.js"></script>
+	<script src="https://static.jejuair.net/hpgg/resources/js/lib/jquery-ui.min.js"></script>
+	<script src="https://static.jejuair.net/hpgg/resources/js/prepare/html2canvas.js"></script>
+	<script src="https://static.jejuair.net/hpgg/resources/js/prepare/jspdf.min.js"></script>
+	<script>
+	let UNTKrecordLocator,UNTKdepDate,UNTKtripType="";
+	let startIndex = 1;
+	let listCount = 10;
+	let hwurl = 'https://wcc.jejuair.net';
+	var cultureCode = 'ko_KR';
+	
+	$(document).ready(function() {
+		$(document).ajaxSend(function(e, jqxhr, settings) {
+			if (settings.url.indexOf('components') < 0 && settings.url.indexOf('pageId') < 0) {
+				Progress.show();
+			}
+		});
+		$(document).ajaxComplete(function(e, jqxhr, settings) {
+			if (settings.url.indexOf('components') < 0  && settings.url.indexOf('pageId') < 0) {
+				Progress.hide();
+			}
+		});
+		
+		//살아있는 예약 상태에서의 예약관련 버튼은 클릭시 alert 으로 return
+		$(document).on('click', 'button[id^=modifyBtn_], button[id^=cancelBtn_], button[id^=paymentBtn_]', function () {
+			let processType = '';
+			let tripType = $(this).data('tripType');
+			let domIntType = $(this).data('domIntType');
+			let recordLocator = $(this).data('recordLocator');
+			let depDate = $(this).data('depDate');
+			
+			if($(this).attr('id').indexOf('modify') > -1) {
+				processType = 'E';
+			} else if($(this).attr('id').indexOf('cancel') > -1) {
+				processType = 'C';
+			} else {
+				processType = 'L';
+			}
+			
+			let resvListData = JSON.parse($(this).parents('div.boarding-wrap').find('#resvListData').val());
+			
+			if(!resvStatuscheck(resvListData, processType)){
+				return false;
+			}
+
+			
+			if(processType == "C" && resvListData.bookingKind == "VOUCHER"){
+				$.JJConfirm({title: '&nbsp;', message: "기프티켓 예약 취소 시 사용된 기프티켓이 소멸되며 운임 외 금액만 환불됩니다. 기프티켓을 이용하시려면 예약 변경을 해주세요. 그래도 취소하시겠습니까?"}, function(results) {
+					if(results == "N"){
+						return false;
+					} else {
+						moveExchange(recordLocator, depDate, tripType, domIntType, cultureCode, "P", processType);	
+					}	
+				}); 
+			} else {
+				
+				moveExchange(recordLocator, depDate, tripType, domIntType, cultureCode , "P", processType);	
+			}
+		});
+		
+		getReservationList(1, "Y");
+
+		guideInfo();
+	});
+
+	
+	let moveExchange = function(recordLocator, depDate, tripType, domIntType, cultureCode, orderSearchType, processType){
+		let reqObj = {
+				recordLocator	: recordLocator,
+				depDate 		: depDate,
+				cultureCode 	: cultureCode,
+				orderSearchType	: "P"
+			};
+			
+			$.ajax({
+				url: 'getReservationDetail.json',
+				type: "post",
+				async: false,
+				dataType: 'json',
+				beforeSend: function (request){				
+					request.setRequestHeader("Pnr", recordLocator);
+				},
+				data: {
+					resvDetailReq : JSON.stringify(reqObj)
+				},
+				success: function(data) {
+					if(data.data.code == null) {
+						$('#formExchange [name=pnrData]').val(JSON.stringify(data.data));
+						$('#formExchange [name=processType]').val(processType);
+						$('#formExchange [name=tripType]').val(tripType);
+						$('#formExchange [name=domIntType]').val(domIntType);
+						$('#formExchange [name=rpnr]').val(data.data.recordLocator);
+							
+						Progress.show(function(){
+							$('#formExchange').attr({
+								'method'	: 'post',
+								'onsubmit' 	: 'return true',
+								'action' 	: 'viewExchange.do'
+							}).submit();
+						});
+
+					} else {
+						let datas = {
+							title: data.data.code,
+							message: data.data.message
+						}; 
+								
+						$.JJAlert(datas);
+					}
+				},
+			});
+	}
+	
+	
+	let getReservationList = function(startIndex, initFlag){
+		let orderType = $("[name=inputRadio]:checked").val();
+		if(initFlag == "Y") {
+			startIndex = 1;
+			$("#reservationList").html("");
+		}
+		
+		cultureCode = cultureCode.replace("_", "-");
+		 
+		const resvListReq = {
+			orderType  : orderType,
+			startIndex : startIndex,
+			listCount : listCount,
+			customerNumber : '089485198',
+			cultureCode : cultureCode
+		};
+		
+		$.ajax({
+			url 		: "getReservationList.json",
+			type 		: "post",
+			async		: true,
+			dataType	: "json",
+			data 		: {
+				resvListReq : JSON.stringify(resvListReq)
+			},
+			success 	: function(data) {
+				if (data.code === '0000') {
+					if(data.data.code == null) {
+						setReservationList(data.data.bookingList, startIndex, initFlag);
+						
+						if(data.data.bookingList !== undefined && data.data.bookingList.length > 0) {
+							//seg length check
+							getAutoCheckinFlagList(data.data.bookingList, startIndex, initFlag);
+						}
+					} else {
+						let datas = {
+							title: data.data.code,
+							message: data.data.message
+						}; 
+						$.JJAlert(datas, function(){
+							if(USER_DEVICE.getName() == "APP"){
+								APPCALL.goMain();
+							} else {
+								location.href = "/";
+							}
+						});	
+					}
+				} else {
+					let datas = {
+						title: data.code,
+						message: data.message
+					}; 
+					$.JJAlert(datas, function(){
+						if(USER_DEVICE.getName() == "APP"){
+							APPCALL.goMain();
+						} else {
+							location.href = "/";
+						}
+					});	
+				}
+			}
+		});
+	} 
+	
+	let getAutoCheckinFlagList = function(reservationListData, startIndex, initFlag) {
+		$.ajax({
+			async: false,
+			type: 'post',
+			url: 'getAutoCheckinFlagList.json',
+			data: {
+				bookingList: JSON.stringify(reservationListData)
+			},
+			success: function(data) {
+				if (data.code === '0000' && data.data.bookingList !== undefined) {
+	 				//사전좌석 구매자가 존재하는 경우만, 모바일탑승권자동발급신청 탑승객 조회 API 호출
+	 				responseDetailHandle(data.data.bookingList, startIndex); 
+				}
+			},
+			error: function(request, status, error) {
+				$.JJAlert('code: ' + request.status + ' message: ' + request.responseText);
+			}
+		});
+	}
+
+	
+	let setTripType = function(reservationData) {
+		let jLength = reservationData.journeys.length;
+		
+		if(jLength === 1) {
+			return "OW";
+		} else if(jLength === 2) {
+			if(reservationData.journeys[0].segments[0].designator.origin === reservationData.journeys[1].segments[reservationData.journeys[1].segments.length - 1].designator.destination && reservationData.journeys[0].segments[reservationData.journeys[0].segments.length - 1].designator.destination === reservationData.journeys[1].segments[0].designator.origin) {
+				return "RT";
+			} else {
+				return "MT";
+			}
+		} else {
+			return "MT";
+		}
+	}
+
+	
+	let btnControl = function(reservationListData) {
+		const jLength = reservationListData.journeys.length;
+		for(let i = 0; i < jLength; i++) {
+			const segments = reservationListData.journeys[i].segments;
+			const sLength = segments.length;
+			for(let j = 0; j < sLength; j++) {
+				const passengerSegment = segments[j].passengerSegment;
+				for(let key in passengerSegment) {
+					if(passengerSegment[key].liftStatus != "CheckedIn" && passengerSegment[key].liftStatus != "Boarded") {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	
+	let setReservationList = function(reservationListData, startIndex, initFlag){
+		let reservationListHtml = "";
+		let countIndex = 0;
+		
+		if(initFlag == "Y") {
+			currentPage = 1;
+			$("#reservationListHtml").html("");
+		}
+		
+		if(reservationListData != null && reservationListData.length > 0){ 
+			let tempDeparture = "";
+			for(let idx in reservationListData){
+				let btnDisplay = true;
+				if(Object.keys(reservationListData[idx].journeys[0].segments).length > 0){
+					reservationListHtml +="<div class='boarding-wrap'>";
+					reservationListHtml +="	<input type='hidden' id='resvListData' data-epnr='"+reservationListData[idx].recordLocator+"' value='"+JSON.stringify(reservationListData[idx])+"'>";
+					reservationListHtml +="	<div class='boarding-box'>";
+					reservationListHtml +="		<div class='boarding'>";
+					reservationListHtml +="			<div class='boarding__header'>";
+					reservationListHtml +="				<div class='boarding__header--item1'>";
+					reservationListHtml +="					<span>예약번호</span> : <span>"+reservationListData[idx].recordLocator+"</span>";
+															
+					reservationListHtml +=" 			</div>";
+					if(reservationListData[idx].info.status != "Closed"){
+						reservationListHtml +="				<div class='boarding__header--item2'>";
+						reservationListHtml +="					<button type='button' aria-label='<span>내보내기' class='button-share2' data-element='sns_share' data-url='' onclick='shareReservation(this, \"" +reservationListData[idx].recordLocator+ "\", \"" + reservationListData[idx].journeys[0].segments[0].designator.departure.replace(/[^0-9]/gi,'')+"\");'></button>";
+																
+						reservationListHtml +="				</div>";
+					}
+					reservationListHtml +="			</div>";
+					reservationListHtml +="				<div class='boarding__info-wrap'>";
+					reservationListHtml +="					<div class='boarding__info--top'>";
+					reservationListHtml +="						<div class='boarding__info--top-item1'>";
+					if(reservationListData[idx].info.status != "Closed"){
+						if(reservationListData[idx].journeys[0].segments[0].identifier.carrierCode != null && reservationListData[idx].journeys[0].segments[0].identifier.identifier != null){
+							reservationListHtml +="						<span>"+reservationListData[idx].journeys[0].segments[0].identifier.carrierCode + reservationListData[idx].journeys[0].segments[0].identifier.identifier+"</span>";
+						}
+					} else if (reservationListData[idx].info.status == "Closed"){
+						reservationListHtml +="						<span>"+reservationListData[idx].recordLocator+"</span>";
+					}
+					reservationListHtml +="						</div>";
+					reservationListHtml +="						<div class='boarding__info--top-item2'>";
+					if(reservationListData[idx].info.status != "Closed"){
+						reservationListHtml +="							<div class='boarding__info-date'>"+ dUtil.dateWeekNameTime(reservationListData[idx].journeys[0].segments[0].designator.departure.replace(/[^0-9]/gi,''), I18N.language)+"</div>";
+						if(String(reservationListData[idx].bookedDday).substr(0, 1) == "-"){
+							reservationListHtml +="							<div class='label label-blue'>D"+ reservationListData[idx].bookedDday +"</div>";
+						} else {
+							reservationListHtml +="							<div class='label label-gray'>D+"+ reservationListData[idx].bookedDday +"</div>";
+						}
+					}
+					reservationListHtml +="							</div>";
+					reservationListHtml +="						</div>";
+					
+					let tempOriginName = reservationListData[idx].journeys[0].segments[0].designator.originName
+					let tempDestinationName = reservationListData[idx].journeys[0].segments[reservationListData[idx].journeys[0].segments.length-1].designator.destinationName;
+					if(tempOriginName == null || tempDestinationName == null ){ 
+						tempOriginName = reservationListData[idx].journeys[0].segments[reservationListData[idx].journeys[0].segments.length-1].designator.origin
+						tempDestinationName = reservationListData[idx].journeys[0].segments[reservationListData[idx].journeys[0].segments.length-1].designator.destination;
+					}
+
+					reservationListHtml +="			<a href='javascript:void(0)' onclick='goReservationDetail(\"" +reservationListData[idx].recordLocator+ "\", \"" + reservationListData[idx].journeys[0].segments[0].designator.departure.replace(/[^0-9]/gi,'')+"\");'>"; //상세 이동 data-recordLocator
+					reservationListHtml +="						<div class='boarding__info'>";
+					if(reservationListData[idx].info.status != "Closed"){
+						reservationListHtml +="							<div class='boarding__info-before'>";
+						if(tempOriginName.indexOf("(") != -1 ){
+							let splitOriginName = tempOriginName.split("(");
+							reservationListHtml +="							<div class='boarding__info-title'>"+splitOriginName[0]+"</div>";
+							reservationListHtml +="							<div class='boarding__info-text'>"+splitOriginName[1].slice(0, -1)+"</div>"; 
+						} else {
+							reservationListHtml +="							<div class='boarding__info-title'>"+tempOriginName+"</div>";
+						}
+						reservationListHtml +="							</div>";
+			
+						
+						let jLength = reservationListData[idx].journeys.length;
+						if(jLength == 1){
+							reservationListHtml +="						<div aria-label='one-way' class='icon-mark one-way'></div>";
+						} else if(jLength == 2){
+							if(reservationListData[idx].journeys[0].segments[0].designator.origin == reservationListData[idx].journeys[1].segments[0].designator.destination && reservationListData[idx].journeys[0].segments[0].designator.destination == reservationListData[idx].journeys[1].segments[0].designator.origin){
+								reservationListHtml +="					<div aria-label='one-way' class='icon-mark round-trip'></div>";
+							} else {
+								reservationListHtml +="					<div aria-label='one-way' class='icon-mark via'></div>";
+							}
+						} else { //다구간 icon 
+							reservationListHtml +="						<div aria-label='one-way' class=''></div>";
+						}
+						reservationListHtml +="							<div class='boarding__info-after'>";
+						if(tempDestinationName.indexOf("(") != -1 ){
+							let splitDestinationName = tempDestinationName.split("(");
+							reservationListHtml +="							<div class='boarding__info-title'>"+splitDestinationName[0]+"</div>";
+							reservationListHtml +="							<div class='boarding__info-text'>"+splitDestinationName[1].slice(0, -1)+"</div>";
+						} else {
+							reservationListHtml +="							<div class='boarding__info-title'>"+tempDestinationName+"</div>";
+						}
+						reservationListHtml +="							</div>";
+
+						btnDisplay = btnControl(reservationListData[idx]);
+						
+					} else if (reservationListData[idx].info.status == "Closed"){
+						reservationListHtml +="							<span class='cancel_text'>취소된 예약입니다.</span>";
+					}
+					reservationListHtml +="						</div>";
+					reservationListHtml +="						</a>";
+					reservationListHtml +=" 					<div class='boarding__info--bot line--solid'>";
+					reservationListHtml +=" 						<div class='boarding__info--bot-wrap'>";
+					reservationListHtml +="								<div class='boarding__info--bot-item1 person'>";
+					
+					let typeADT = "";
+					let typeCHD = "";
+					let typeINF = "";
+					for(let pdx in reservationListData[idx].passengersInfo){
+						if(reservationListData[idx].passengersInfo[pdx].passengerTypeCode =="ADT"){
+							
+							typeADT ='										<div class="person__item"><i ar ia-label="성인" class="icon adult"></i><span>'+ reservationListData[idx].passengersInfo[pdx].count+'</span><span class="hidden">명</span></div>'; 
+						} else if(reservationListData[idx].passengersInfo[pdx].passengerTypeCode =="CHD"){
+							
+							typeCHD ='										<div class="person__item"><i ar ia-label="소아" class="icon child"></i><span>'+ reservationListData[idx].passengersInfo[pdx].count+'</span><span class="hidden">명</span></div>';   
+						} else if(reservationListData[idx].passengersInfo[pdx].passengerTypeCode =="INF"){
+							
+							typeINF ='										<div class="person__item"><i ar ia-label="유아" class="icon baby"></i><span>'+ reservationListData[idx].passengersInfo[pdx].count+'</span><span class="hidden">명</span></div>';   
+						}
+					}
+					reservationListHtml +=  typeADT + typeCHD + typeINF;
+		
+					
+					reservationListHtml +="								</div>";
+					reservationListHtml +="								<div class='boarding__info--bot-item2'>";
+					reservationListHtml +="									<span class='text c-gray --bold'>"+getStatusName(reservationListData[idx].info.status)+"</span>";
+					reservationListHtml +="								</div>";
+					reservationListHtml +="							</div>";
+					reservationListHtml +="						</div>";
+					
+					if(reservationListData[idx].info.status == "Hold" && reservationListData[idx].info.paidStatus == "UnderPaid"){
+						reservationListHtml +="					<div class='gray-box-term'>";
+						reservationListHtml +="						<span class='gray-box__text'>"+dUtil.dateWeekNameTime(reservationListData[idx].hold.expiration.replace(/[^0-9]/gi,''), I18N.language)+"</span>";
+						reservationListHtml +="					</div>";
+					}
+					
+					
+					if(reservationListData[idx].info.status == "Confirmed"){
+						let connectData = calConnectSection(reservationListData[idx].journeys[0]);
+						if(connectData != ""){
+							reservationListHtml +="				<div class='gray-box-term'>";
+							reservationListHtml +=					connectData;
+							reservationListHtml +="				</div>";
+						}
+					}
+
+					if(reservationListData[idx].info.status != "Closed"){
+						reservationListHtml +="				<div class='button-wrap3-row'>";
+						reservationListHtml +="					<div class='button-wrap'>";
+						let depDate = reservationListData[idx].journeys[0].segments[0].designator.departure.replace(/[^0-9]/gi,'');
+						let boardingDate = depDate.substr(0, 4) + "-" + depDate.substr(4, 2) + "-" + depDate.substr(6, 2);
+						
+						if(reservationListData[idx].info.status == "Confirmed" && !reservationListData[idx].untk && btnDisplay){
+							
+							if(reservationListData[idx].bookingKind != "PARTNER"){
+								reservationListHtml +="						<button type='button' class='button' id='modifyBtn_"+(parseInt(idx) + (startIndex - 1))+"' data-record-locator='" + reservationListData[idx].recordLocator + "' data-dep-date='" + boardingDate + "' data-trip-type='" + setTripType(reservationListData[idx]) + "' data-dom-int-type='" + reservationListData[idx].domIntType + "'>예약변경</button>";
+							}
+							reservationListHtml +="						<button type='button' class='button' id='cancelBtn_"+(parseInt(idx) + (startIndex - 1))+"' data-record-locator='" + reservationListData[idx].recordLocator + "' data-dep-date='" + boardingDate + "' data-trip-type='" + setTripType(reservationListData[idx]) + "' data-dom-int-type='" + reservationListData[idx].domIntType + "'>예약취소</button>";
+						}
+						if(reservationListData[idx].info.status == "Hold" && reservationListData[idx].info.paidStatus == "UnderPaid"){
+							if(reservationListData[idx].bookingKind != "CONVENIENCE"){
+								reservationListHtml +="						<button type='button' class='button' id='paymentBtn_"+(idx + (startIndex - 1))+"' data-record-locator='" + reservationListData[idx].recordLocator + "' data-dep-date='" + boardingDate + "' data-trip-type='" + setTripType(reservationListData[idx]) + "'>결제하기</button>";
+							}
+						}					
+						
+						reservationListHtml +="					</div>";
+						reservationListHtml +="				</div>";
+					}
+					reservationListHtml +="			</div>";
+					reservationListHtml +="		</div>";
+					reservationListHtml +="		<div class='boarding_end'></div>";
+					reservationListHtml +="	</div>";
+					
+					reservationListHtml +="	<div class='button-wrap2' id='checkinBtnSection_"+(idx + (startIndex - 1))+"'></div>";
+
+					if(reservationListData[idx].info.status == "Confirmed"){
+						if(reservationListData[idx].untk){
+				          	reservationListHtml +="		<div class='cancellation'>";
+							reservationListHtml +="			<p>";
+																
+							reservationListHtml +="				<span class=title>항공편 변경</span>예약하신 항공편이 가까운 시간의 동일한 <span class=mo-br> 노선으로 변경 되었어요.";
+							reservationListHtml +="			</p>";
+							reservationListHtml +="		</div>";						
+							reservationListHtml +="		<div class='button-wrap2  mo-h'>";
+							reservationListHtml +="			<button type='button' class='button -w100' data-bookingkey='" + reservationListData[idx].bookingKey+"' data-recordlocator='" + reservationListData[idx].recordLocator+"' onclick='javascript:openUNTKConfirm(this);'>변경된 항공편 확인하기</button>"; //
+							reservationListHtml +="		</div>";
+						}
+					}
+					reservationListHtml +="</div>";
+				}
+			}
+			
+			$("#reservationList").append(reservationListHtml);
+			$("#sortRadio").show();
+	
+			if(startIndex == 1){
+				$("#divResvList").show();
+				$("#sortRadio").show();
+			}
+		} else {
+			if(startIndex == 1){
+				$("#divResvNoList").show();
+			}
+		}
+	
+		if(reservationListData.length < listCount){
+			$("#resvListBtnMore").hide();
+		} else {
+			$("#resvListBtnMore").show();
+		}
+	}
+	
+	
+	let responseDetailHandle = function(reservationListData, startIndex){
+		let gmtNow = new Date(); //local 시간 
+		let utcNow = new Date(gmtNow.getTime() + (gmtNow.getTimezoneOffset() * 60000)); //UTC변환
+
+		for(let idx in reservationListData){
+			if(reservationListData[idx].info.status == "Confirmed") {
+				let domIntType = reservationListData[idx].domIntType
+				let routeTypeTime = 3600000;
+				let getAutoBoardingPassPs = false;
+
+				if(domIntType == "I"){
+					routeTypeTime = 5400000;
+				}
+
+				let boardingPassAutoTotal = false;
+				let boardingPassCheckInTotal = false;
+				
+				for(let jdx in reservationListData[idx].journeys){
+					if(reservationListData[idx].journeys[jdx].segments.length >= 2){
+						continue;
+					}
+
+					let boardingPassAuto = false;
+					let boardingPassCheckIn = false;
+					let boardingPassSeat = false;
+		
+					for(let sdx in reservationListData[idx].journeys[jdx].segments){
+						
+						if(reservationListData[idx].journeys[jdx].segments[sdx].legs.length >= 2){
+							continue;
+						}
+						
+						for(let psdx in reservationListData[idx].journeys[jdx].segments[sdx].passengerSegment){
+							if(reservationListData[idx].journeys[jdx].segments[sdx].passengerSegment[psdx].seats.length > 0){
+								boardingPassSeat = true; //사전좌석 
+								break;
+							} 
+						}
+						
+						let depDateObj = new Date(reservationListData[idx].journeys[jdx].segments[sdx].legs[0].legInfo.departureTimeUtc.replace("Z", ""));
+						if(boardingPassSeat) {
+							if(depDateObj.getTime()- 86400000 > utcNow.getTime()){ //24시간 초과
+								boardingPassAuto = true;
+							}
+						}
+
+						if((depDateObj.getTime()- 86400000) <= utcNow.getTime() && utcNow.getTime() < (depDateObj.getTime() - routeTypeTime)){ //24시간 이하 ~ 1시간 : 국내선, ~1시간 30분 : 국제선
+							boardingPassCheckIn = true;
+						}
+					}
+		
+					if(boardingPassAuto) {
+						boardingPassAutoTotal = boardingPassAutoTotal || boardingPassAuto;
+					}
+					
+					if(boardingPassCheckIn) {
+						boardingPassCheckInTotal = boardingPassCheckInTotal || boardingPassCheckIn;
+					}
+				}
+				
+				
+				if(PROP.assetsUrl.indexOf('//static.jejuair.net') < 0) {
+					if(boardingPassAutoTotal && !reservationListData[idx].allAutoCheckin) {
+						$("#checkinBtnSection_"+(idx + (startIndex - 1))).append("<button type='button' class='button -w100' onclick='goAutoBoardingPass(\"R\", \"" +reservationListData[idx].recordLocator+ "\", \""+reservationListData[idx].domIntType+"\", \"" + reservationListData[idx].journeys[0].segments[0].designator.departure + "\");'>모바일 탑승권 자동발급 신청</button>");
+					}
+					
+					if(reservationListData[idx].isAutoCheckin){
+	 					$("#checkinBtnSection_"+(idx + (startIndex - 1))).append("<button type='button' class='button -w100' onclick='goAutoBoardingPass(\"C\", \"" +reservationListData[idx].recordLocator+ "\", \""+reservationListData[idx].domIntType+"\", \"" + reservationListData[idx].journeys[0].segments[0].designator.departure + "\");' id='autoCheckinCancelBtn_"+(idx + (startIndex - 1))+"'>모바일 탑승권 자동발급 신청취소</button>"); 
+					}
+				}
+				
+				if(boardingPassCheckInTotal) {
+					$("#checkinBtnSection_"+(idx + (startIndex - 1))).append("<button type='button' class='button -w100' onclick='goCheckinMain();' id='checkinBtn_"+(idx + (startIndex - 1))+"'>모바일 탑승권 발급</button>");
+				}
+				
+				
+				if(reservationListData[idx].untk == true){
+					$("#checkinBtnSection_"+(idx + (startIndex - 1))).hide();
+				}
+			}
+		}
+	}
+
+	
+	let calConnectSection = function(journey){
+		let timeHtml = "";
+		
+		if(journey.segments.length >= 2){
+			let result = "";
+			let calMin = 0;
+			
+			let depDate = new Date(journey.segments[1].legs[0].legInfo.departureTimeUtc.replace("Z", ""));
+			let arrDate = new Date(journey.segments[0].legs[0].legInfo.arrivalTimeUtc.replace("Z", ""));
+			
+			let calDate = depDate.getTime() - arrDate.getTime();
+			calMin += calDate / 1000 / 60;
+				
+			let resultDay = Math.floor(calMin / 1440);
+			let resultHours = Math.floor((calMin - resultDay * 1440) / 60);
+			let resultMinutes = calMin - resultDay * 1440 - resultHours * 60;
+
+			if(resultDay > 0){
+				result += resultDay + "일";
+			} 
+			if(resultHours > 0){
+				result += resultHours + "시간";
+			} 
+			if(resultMinutes > 0){
+				result += "" + resultMinutes + " 분 대기"
+				
+			}
+
+			timeHtml = "<span class='gray-box__text'>" + (journey.segments.length-1) + " 회 경유</span>"
+					+"<span class='gray-box__text'>"+ result.trim() +"</span>";
+		}
+		
+		return timeHtml;
+	}
+
+	
+	let getStatusName = function(status){
+		
+		switch(status) {
+			case "Default" :
+			status = "Default";
+				break;
+			case "Hold" :
+				status = "결제대기";
+				break;
+			case "Confirmed" :
+				status = "예약완료";
+				break;
+			case "Closed" :
+				status = "예약취소";
+				break;
+			case "HoldCanceled" :
+				status = "HoldCanceled";
+				break;
+			case "PendingArchive" :
+				status = "PendingArchive";
+				break;
+			case "Archived" :
+				status = "Archived";
+				break;
+		}
+		return status;
+	}
+	
+	
+	let moreResvList = function(){
+		
+		startIndex = startIndex + listCount; 
+		
+		getReservationList(startIndex, "N");
+	}
+
+	
+	let shareReservation = function(obj, recordLocator, depDate) {
+		let resvDetailDataObj = new Object();
+		
+		resvDetailDataObj.recordLocator = recordLocator;
+		resvDetailDataObj.boardingDate = depDate.substr(0, 4) + '-' + depDate.substr(4, 2) + '-' + depDate.substr(6, 2);
+		resvDetailDataObj.accessFlag = 'list';
+		
+		getShortUrl('mypage', encodeURIComponent(JSON.stringify(resvDetailDataObj)));
+	}
+
+	
+	let resvStatuscheck = function(resvListData, flag) {
+		if(flag == "E"){ //예약변경 상태값 체크
+			if(resvListData.breakdown.balanceDue < 0){
+				$("#alertModalLayer").find(".alert-text").text("고객센터로 문의해주세요.");
+				fullPopOpen("alertModalLayer");
+				return false;
+			}
+
+			if(resvListData.pointYn == "Y"){
+				$("#alertModalLayer").find(".alert-text").text("포인트로 결제하신 경우 예약 취소 후 다시 예약해주세요.");
+				fullPopOpen("alertModalLayer");
+				return false;
+			}
+
+			
+			let openDate = new Date(Date.UTC(2021,9,24,15));//date 객체(0~11 까지 정수) 10월 이니까 -1 으로 9
+			let bookDate = new Date(resvListData.bookedDateCurrTime); 
+			
+			if(bookDate <= openDate){
+				$("#alertModalLayer").find(".alert-text").text("해당 예약의 변경을 원하시는 경우 취소 후 재구매해 주시기 바랍니다."); 
+				fullPopOpen("alertModalLayer");
+				return false;
+			}
+
+			if(Object.keys(resvListData.passengersInfo).length == 1){
+				for(let pdx in resvListData.passengersInfo){
+					if(resvListData.passengersInfo[pdx].count == 1 && resvListData.passengersInfo[pdx].passengerTypeCode == "CHD"){ //소아 한명일 경우
+						$("#alertModalLayer").find(".alert-text").text("혼자 여행하는 어린이 예약의 변경은 고객센터(1599-1500)으로 문의해주세요.");
+						fullPopOpen("alertModalLayer");
+						return false;
+					}
+				}
+			}
+		}
+
+		if(flag == "C"){ //예약변경 상태값 체크
+			if(resvListData.breakdown.balanceDue < 0){
+				$("#alertModalLayer").find(".alert-text").text("고객센터로 문의해주세요.");
+				fullPopOpen("alertModalLayer");
+				return false;
+			}
+		}
+
+		if(flag !== 'L') {
+			const journeys = resvListData.journeys;
+			const journeysLen = journeys.length;
+			for(let i = 0; i < journeysLen; i++) {
+				const segments = journeys[i].segments;
+				const segmentsLen = segments.length;
+				for(let j = 0; j < segmentsLen; j++) {
+					const passengerSegment = segments[j].passengerSegment;
+					for(let key in passengerSegment) {
+						if(passengerSegment[key].liftStatus === 'CheckedIn' || passengerSegment[key].liftStatus === 'Boarded') {
+							if(segments[j].legs[0].legInfo.status !== 'Closed') {
+								$('#alertModalLayer').find('.alert-text').html('출발여정이 수속 중 입니다.<br/>수속이 완료된 후 다시 시도해주세요.'); 
+								fullPopOpen('alertModalLayer');
+								return false;
+							} else {
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
+	
+	let guideInfo = function() {
+		$.ajax({
+			url		:'/api/common/biz/guideInfo.json',
+			type	:'post',
+			async   : false,
+			global	: false,
+			data	: {
+				langCd : I18N.language,
+				categoryNo : '0000000075'
+			},
+			success	: function(data) {
+				let $wrap = $('.service-information');
+				if(data.data === undefined) {
+					$wraps.remove();
+					return;
+				}
+				
+				$wrap.toggle();
+				$wrap.find('[data-element=toggle__panel]').html(data.data.editorCont);
+			}
+		});
+	}
+	
+	
+	let goReservationDetail = function(recordLocator, depDate, domIntType) {
+		let boardingDate = depDate.substr(0, 4) + "-" + depDate.substr(4, 2) + "-" + depDate.substr(6, 2);
+		
+		let resvDetailReqObj = new Object();
+		resvDetailReqObj.recordLocator = recordLocator;
+		resvDetailReqObj.cultureCode = cultureCode;
+		resvDetailReqObj.depDate = boardingDate;
+		resvDetailReqObj.orderSearchType = "P"; 
+		$("#formDetail [name=resvDetailReq]").val(JSON.stringify(resvDetailReqObj));
+		$("#formDetail [name=domIntType]").val(domIntType);
+		$("#formDetail [name=rpnr]").val(resvDetailReqObj.recordLocator);
+		Progress.show(function(){
+			$("#formDetail").attr({
+				"onsubmit" 	: "return true",
+				"action" 	: "viewReservationDetail.do"
+			}).submit();
+		});
+	}
+
+	
+	let goAutoBoardingPass = function(flag, recordLocator, domIntType, departure) {
+		let depDate = departure.substr(0, 4) + "-" + departure.substr(5, 2) + "-" + departure.substr(8, 2);
+		let passengerObj = new Object();
+		
+		let resvDetailReqObj = new Object();
+		resvDetailReqObj.recordLocator = recordLocator;
+		resvDetailReqObj.cultureCode = cultureCode;
+		resvDetailReqObj.depDate = depDate;
+		resvDetailReqObj.orderSearchType = "P"; 
+
+		let params = {
+			  resvDetailReq: encodeURI(JSON.stringify(resvDetailReqObj))
+			, domIntType   : domIntType
+			, viewFlag     : flag
+			, passengerObj : encodeURI(JSON.stringify({}))
+			, rpnr 		   : resvDetailReqObj.recordLocator
+		}
+
+		URL_LINK.getHwUrl('/ibe/checkin/viewAutoBoardingPass.do', params);
+	}
+
+	
+	let goCheckinMain = function(){
+		URL_LINK.getHwUrl('/ibe/checkin/viewCheckin.do');
+	}
+
+	
+	const openUNTKConfirm = function(_this){
+		$.ajax({
+			url 		: "../mypage/viewUNTKConfirm.do",
+			type 		: "post",
+			dataType	: "html",
+			data 		: {
+				bookingKey : $(_this).data('bookingkey'),
+				recordLocator :  $(_this).data('recordlocator'),
+				domIntType : JSON.parse($(_this).parents('.boarding-wrap').find('#resvListData').val()).domIntType,
+				cultureCode : cultureCode,
+				rpnr : $(_this).data('recordlocator')
+			},
+			success 	: function(data) {
+				for(let i=0; i<$(".boarding-wrap").length; i++){
+					if($(".boarding-wrap").eq(i).find('#resvListData').data('epnr') === $(_this).data('recordlocator')){
+						let resvListData = JSON.parse($(".boarding-wrap").eq(i).find('#resvListData').val());
+						UNTKrecordLocator = resvListData.recordLocator;			
+						UNTKdepDate = resvListData.journeys[0].segments[0].designator.departure.substring(0,10)
+						UNTKtripType = setTripType(resvListData);
+						break;
+					}
+				}	
+				$("#btnModalOpen").data('target','#untkForm')
+				$("#untkForm").find('.modal-content').html(data);
+				$("#btnModalOpen").trigger("click");
+			}
+		});
+	}
+
+	$(window).bind('pageshow', function(e) {
+		if (e.originalEvent && e.originalEvent.persisted) {
+			Progress.hide();
+		}
+	});
+
+
+	</script>
+	
+	<div id="ifmWrap" style="height:100%; display:none; overflow:auto; text-align:center; -webkit-overflow-scrolling:touch;">
+		<iframe src="" width="100%" height="100%" name="popupChkApp"></iframe>    
+	</div>
+<script type="text/javascript"  src="/RYUXNXAfMSLWJIymXfYA/cYzuNS6XY5w7/OFIrR2o/e2E/fbFgBd1A"></script></body>
+</html>

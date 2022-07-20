@@ -1,57 +1,7 @@
-
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
 <div id="header" class="header" th:fragment="header">
-
-  <!-- mobile -->
-  <header class="header__inner mobile-only">
-    <div class="header__button-wrap subType"  data-element="gnbToggle"  >
-    </div>
-    <!-- 스크롤시 스티키 상단 -->
-
-    <!-- 전체메뉴 -->
-    <div class="gnb" id="gnb">
-      <div class="gnb__header">
-        <div class="gnb__header-top" data-absolute-sticky>
-          <div class="additional">
-          </div>
-        </div>
-        <div class="gnb__header-bot">
-          <div class="before">
-            <div class="title">
-              로그인 하시고<br>더 풍부한 혜택을 누리세요!
-            </div>
-            <!-- fixed 영역 -->
-            <div class="sticky-wrap">
-              <div class="button-wrap button-flex sticky__inner gnb-sticky1">
-              </div>
-            </div>
-            <!-- //fixed 영역 -->
-            <div class="title">
-              <div class="title__section title__section--additional">제주항공에서 예약하지 않으셨다면?
-                <div class="additional">
-                  <div class="link-wrap">
-                    <a href="javascript:;" class="link-wrap__underline" data-action="menu" data-menu-name="bookingSearch"><span>예약조회</span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="icon-link">
-            </div>
-          </div>
-          <!-- //로그인 후 -->
-        </div>
-      </div>
-      <hr class="section-spacer">
-      <div class="gnb-wrap">
-        <div class="gnb__footer">
-        </div>
-      </div>
-    </div>
-    <!-- //전체메뉴 -->
-  </header>
-  <!-- //mobile -->
 
   <!-- pc용 공통 헤더 -->
 
@@ -93,11 +43,10 @@
 
 
         <!--  언어 설정  -->
-        <!-- 일단 주석으로 처리할게요 -->
         <button type="button" class="util__country" data-custom-toggle="button">
           <span class="text">대한민국</span>
         </button>
-        <!--
+
         <div class="header-country__layer" data-custom-toggle="panel">
             <div class="country__title">
                 지역 및 언어 설정
@@ -133,7 +82,7 @@
                 <span class="hidden">닫기</span>
             </button>
         </div>
-        -->
+
         <!-- / 언어 설정 끝 -->
       </div>
     </div>
@@ -152,14 +101,14 @@
         <h1 class="header__logo">
           <a href="javascript:;" data-action="menu" data-menu-name="main">
 
-            <img src="/user/lib/images/JEJUair-Logo.png" alt="jejuairlogo" loading="lazy"/>
+            <img src="/user/lib/images//JEJUair-Logo.png" alt="jejuairlogo" loading="lazy"/>
           </a>
         </h1>
         <h2 class="header__page-name"></h2>
 
         <!-- 대표 메뉴 -->
         <div class="header__link-list">
-          <a href="javascript:void(0);" class="header__link" onclick="URL_LINK.getI18Url('/ibe/booking/Availability.do')">항공권 예매</a>
+          <a href="javascript:void(0);" class="header__link" onclick="URL_LINK.getI18Url('/additionalInfo/additionalIntro')">항공권 예매</a>
           <a href="javascript:void(0);" class="header__link" onclick="URL_LINK.getI18Url('/member/mypage/main.do')">마이페이지</a>
           <a href="javascript:void(0);" class="header__link" onclick="URL_LINK.getI18Url('/additionalService/service/main.do')">부가서비스 안내</a>
           <a href="javascript:void(0);" class="header__link" onclick="URL_LINK.getI18Url('/ibe/checkin/viewCheckin.do')">모바일 탑승권</a>
@@ -338,13 +287,13 @@
             <div class="gnb__title">SNS</div>
             <div class="sns-wrap">
               <a href="https://www.facebook.com/funjejuair/" target="_blank" class="sns-wrap__item">
-                <img loading="lazy" src="/user/lib/images/icon-header-app-facebook.png" alt="https://www.facebook.com/funjejuair/">
+                <img loading="lazy" src="/user/lib/images//icon-header-app-facebook.png" alt="https://www.facebook.com/funjejuair/">
               </a>
               <a href="https://www.youtube.com/user/funjejuair" target="_blank" class="sns-wrap__item">
-                <img loading="lazy" src="/user/lib/images/icon-header-app-youtube.png" alt="https://www.youtube.com/user/funjejuair">
+                <img loading="lazy" src="/user/lib/images//icon-header-app-youtube.png" alt="https://www.youtube.com/user/funjejuair">
               </a>
               <a href="https://instagram.com/jejuair_official" target="_blank" class="sns-wrap__item">
-                <img loading="lazy" src="/user/lib/images/icon-header-app-instagram.png" alt="https://instagram.com/jejuair_official">
+                <img loading="lazy" src="/user/lib/images//icon-header-app-instagram.png" alt="https://instagram.com/jejuair_official">
               </a>
             </div>
           </div>
@@ -356,5 +305,4 @@
   </header>
   <!-- //pc용 공통 헤더 끝 -->
 </div>
-
 </html>

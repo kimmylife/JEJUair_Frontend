@@ -15,189 +15,189 @@
 <!-- topscript 끝-->
 
 <body>
-    <div class="container">
-        <!—- menu 시작-—>
-        <div th:replace="/admin/fragment/menu :: menu"></div>
-        <!—- menu 끝-—>
+<div class="container">
+    <!—- menu 시작-—>
+    <div th:replace="/admin/fragment/menu :: menu"></div>
+    <!—- menu 끝-—>
 
-        <div class="containerbody">
-            <!-- main -->
-            <div class="main">
-                <div class="details">
-                    <!-- order details list -->
-                    <div class="recentOrders">
-                        <div class="calheader">
-                            <h2>1:1문의 목록</h2>
+    <div class="containerbody">
+        <!-- main -->
+        <div class="main">
+            <div class="details">
+                <!-- order details list -->
+                <div class="recentOrders">
+                    <div class="calheader">
+                        <h2>1:1문의 목록</h2>
+                    </div>
+                    <div class="scheduleSearch">
+                        <form action="#">
+                            <div class="wrapper">
+                                <fieldset class="selectDiv">
+                                    <select name="menu" id="menu-select">
+                                        <option value="">전체</option>
+                                        <option value="Q&A">Q&A</option>
+                                    </select>
+                                    <input type="text" class="searchBox" title="검색어를 입력하세요"
+                                           placeholder="검색어를 입력하세요">
+                                    <button type="submit" class="button search" value="검색">검색</button>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr class="topbanner">
+                            <td class="personal_inquiryNum">번호</td>
+                            <td class="personal_inquiryTitle">제목</td>
+                            <td class="personal_inquiryWriter">작성자</td>
+                            <td class="personal_inquiryAnswer">답변여부</td>
+                            <td class="personal_inquiryRegdate">등록일</td>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">10</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">미답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">9</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">미답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">8</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">미답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">7</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">미답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">6</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">5</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">4</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">3</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">2</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
+                            <td class="personal_inquiryNum">1</td>
+                            <td class="personal_inquiryTitle">문의드립니다.</td>
+                            <td class="personal_inquiryWriter">반하나</td>
+                            <td class="personal_inquiryAnswer">답변</td>
+                            <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+
+                    <div class="paging">
+                        <div class="page_btn">
+                            <a href="#" class="firstpage_btn">First</a>
                         </div>
-                        <div class="scheduleSearch">
-                            <form action="#">
-                                <div class="wrapper">
-                                    <fieldset class="selectDiv">
-                                        <select name="menu" id="menu-select">
-                                            <option value="">전체</option>
-                                            <option value="Q&A">Q&A</option>
-                                        </select>
-                                        <input type="text" class="searchBox" title="검색어를 입력하세요"
-                                            placeholder="검색어를 입력하세요">
-                                            <button type="submit" class="button search" value="검색">검색</button>
-                                    </fieldset>
-                                </div>
-                            </form>
+
+                        <div class="page_btn">
+                            <a href="#" class="prevpage_btn">Prev</a>
                         </div>
-                        <table>
-                            <thead>
-                                <tr class="topbanner">
-                                    <td class="personal_inquiryNum">번호</td>
-                                    <td class="personal_inquiryTitle">제목</td>
-                                    <td class="personal_inquiryWriter">작성자</td>
-                                    <td class="personal_inquiryAnswer">답변여부</td>
-                                    <td class="personal_inquiryRegdate">등록일</td>
-                                </tr>
-                            </thead>
-                            
-                            <tbody>
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">10</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">미답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
 
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">9</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">미답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
+                        <div class="page_btn2 current_btn">
+                            <a href="#" class="pagenum">1</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">2</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">3</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">4</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">5</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">6</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">7</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">8</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">9</a>
+                        </div>
+                        <div class="page_btn2">
+                            <a href="#" class="pagenum">10</a>
+                        </div>
 
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">8</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">미답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
+                        <div class="page_btn">
+                            <a href="#" class="prevpage_btn">Next</a>
+                        </div>
 
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">7</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">미답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">6</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">5</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">4</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">3</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">2</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                                <tr onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry_info.html'">
-                                    <td class="personal_inquiryNum">1</td>
-                                    <td class="personal_inquiryTitle">문의드립니다.</td>
-                                    <td class="personal_inquiryWriter">반하나</td>
-                                    <td class="personal_inquiryAnswer">답변</td>
-                                    <td class="personal_inquiryRegdate">2022-06-10 11:12:23</td>
-                                </tr>
-
-                            </tbody>
-                            
-                        </table>
-
-
-                        <div class="paging">
-                            <div class="page_btn">
-                                <a href="#" class="firstpage_btn">First</a>
-                            </div>
-
-                            <div class="page_btn">
-                                <a href="#" class="prevpage_btn">Prev</a>
-                            </div>
-
-                            <div class="page_btn2 current_btn">
-                                <a href="#" class="pagenum">1</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">2</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">3</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">4</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">5</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">6</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">7</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">8</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">9</a>
-                            </div>
-                            <div class="page_btn2">
-                                <a href="#" class="pagenum">10</a>
-                            </div>
-
-                            <div class="page_btn">
-                                <a href="#" class="prevpage_btn">Next</a>
-                            </div>
-
-                            <div class="page_btn">
-                                <a href="#" class="firstpage_btn">End</a>
-                            </div>
+                        <div class="page_btn">
+                            <a href="#" class="firstpage_btn">End</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- underscript 시작-->
-    <script th:replace="/admin/fragment/underscript :: underscript"></script>
-    <!-- underscript 끝-->
+<!-- underscript 시작-->
+<script th:replace="/admin/fragment/underscript :: underscript"></script>
+<!-- underscript 끝-->
 </body>
 
 </html>

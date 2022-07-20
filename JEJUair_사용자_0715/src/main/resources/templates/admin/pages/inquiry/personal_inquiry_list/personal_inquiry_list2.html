@@ -21,82 +21,82 @@
         border: 1px solid gray;
         padding-left: 10px;
     }
-	.ck.ck-editor {
-    	/* max-width: 90%;  */
+    .ck.ck-editor {
+        /* max-width: 90%;  */
         position: relative;
         width: 100%;
-	}
-	.ck-editor__editable {
+    }
+    .ck-editor__editable {
         min-height: 500px;
-	}
+    }
 </style>
 <!-- topscript 시작-->
 <script th:replace="/admin/fragment/topscript :: topscript"></script>
 <!-- topscript 끝-->
 
 <body>
-    <div class="container">
-        <!—- menu 시작-—>
-        <div th:replace="/admin/fragment/menu :: menu"></div>
-        <!—- menu 끝-—>
+<div class="container">
+    <!—- menu 시작-—>
+    <div th:replace="/admin/fragment/menu :: menu"></div>
+    <!—- menu 끝-—>
 
-        <div class="containerbody">
-            <!-- main -->
-            <div class="main">
-                <div class="details">
-                    <!-- order details list -->
-                    <div class="recentOrders">
-                        <div class="calheader">
-                            <h2>1:1문의 세부내용</h2>
-                        </div>
-                        <div class="scheduleSearch">
-                            <form action="#">
-                                <div class="wrapper1">
-                                    <input type="text" class="searchBox1" title="검색어를 입력하세요"
-                                            placeholder="Q&A" style="border: 1px solid var(--black2);" >
-                                </div>
-                            </form>
-                            
-                        </div>
-                    
-                        <table>
-                            <thead>
-                                <tr class="topbanner" style="color: var(--black2);">
-                                    <td class="airplaneName" style="text-align: left;">문의드립니다</td>
-                                    <td class="departureTime" style="text-align: right;">작성자:반하나</td>
-                                    <td class="arriveTime" style="text-align: right;">등록일 2022-06-10 11:12:23</td>
-                                </tr>
-                            </thead> 
-                            
-                        </table>
-                        <tbody>
-                            <textarea name="textarea1" ></textarea>
-                            <textarea name="textarea2"style="height: 15em;" ></textarea>
-                        </tbody>
-                        <div class="event_btn">
-                            <div class="buttonArea">
-                                <button type="submit" class="button back" value="목록" onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry list.html'">목록</button>
-                                <button type="submit" class="button write" value="답변등록" onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry list.html'">답변등록</button>
+    <div class="containerbody">
+        <!-- main -->
+        <div class="main">
+            <div class="details">
+                <!-- order details list -->
+                <div class="recentOrders">
+                    <div class="calheader">
+                        <h2>1:1문의 세부내용</h2>
+                    </div>
+                    <div class="scheduleSearch">
+                        <form action="#">
+                            <div class="wrapper1">
+                                <input type="text" class="searchBox1" title="검색어를 입력하세요"
+                                       placeholder="Q&A" style="border: 1px solid var(--black2);" >
                             </div>
-                        </div>
+                        </form>
 
                     </div>
+
+                    <table>
+                        <thead>
+                        <tr class="topbanner" style="color: var(--black2);">
+                            <td class="airplaneName" style="text-align: left;">문의드립니다</td>
+                            <td class="departureTime" style="text-align: right;">작성자:반하나</td>
+                            <td class="arriveTime" style="text-align: right;">등록일 2022-06-10 11:12:23</td>
+                        </tr>
+                        </thead>
+
+                    </table>
+                    <tbody>
+                    <textarea name="textarea1" ></textarea>
+                    <textarea name="textarea2"style="height: 15em;" ></textarea>
+                    </tbody>
+                    <div class="event_btn">
+                        <div class="buttonArea">
+                            <button type="submit" class="button back" value="목록" onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry list.html'">목록</button>
+                            <button type="submit" class="button write" value="답변등록" onclick="location.href='/inquiry/personal_inquiry list/personal_inquiry list.html'">답변등록</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- underscript 시작-->
-    <script th:replace="/admin/fragment/underscript :: underscript"></script>
-    <!-- underscript 끝-->
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#classic' ), {
-                language: 'ko' //언어설정
-            })
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+<!-- underscript 시작-->
+<script th:replace="/admin/fragment/underscript :: underscript"></script>
+<!-- underscript 끝-->
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#classic' ), {
+            language: 'ko' //언어설정
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>
